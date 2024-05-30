@@ -1,0 +1,27 @@
+.p-box {
+    max-width: 300px;
+    min-width: 300px;
+    margin: 2%;
+    border: black solid 1px;
+    text-align: center;
+}
+
+.p-title {
+    text-align: left;
+    margin-left: 2%;
+}
+
+.p-but {
+    margin-bottom: 3%;
+}
+
+.p-image {
+    min-width: 80%;
+    max-width: 80%;
+    min-height: 60%;
+    max-height: 60%;
+}
+
+.addp-wrap {    
+    padding-left: 20%;
+}

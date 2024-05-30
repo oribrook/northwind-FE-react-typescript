@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { createContext, useContext, useState } from "react";
+import { SiteRoutes } from "./SiteRoutes";
+import Footer from "./components/footer/Footer";
+import NavBar from "./components/navbar/NavBar";
+import SideBar from "./components/sidebar/SideBar";
+
+import "./index.css";
+
+
+const AppContext = createContext({});
 
 function App() {
+  const [order, setOrder] = useState({})
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <AppContext.Provider value={{ order, setOrder }}>
+        <div className="app-wrap">
+          <SideBar />
+          <div className="app-content">
+            <NavBar />
+            <SiteRoutes />
+            <Footer />
+          </div>
+        </div>
+      </AppContext.Provider>
     </div>
   );
 }
