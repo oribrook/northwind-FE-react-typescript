@@ -1,18 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { UserModel } from "../../models/UserModel";
 import { singUp } from "../../api/auth";
+import { AppContext } from "../../App";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const { register, handleSubmit, reset } = useForm<UserModel>();
 
+  const { setUserData } = useContext(AppContext)
+  const nav = useNavigate()
   const handleRegister = async (um: UserModel) => {
-    const res = await singUp(um);
-      if (res) {
-        // console.log(res); // token
-        
-      alert("Welcome" + um.firstName);
-    //   reset();
+    const token = await singUp(um);
+      if (token) {        
+        localStorage.setItem("token", token as string);
+        setUserData(um)
+        nav("/home")          
     }
   };
   return (

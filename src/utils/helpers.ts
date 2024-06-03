@@ -10,3 +10,10 @@ export function parseJwt (token: string) : UserModel{
     return new UserModel(JSON.parse(jsonPayload).user);
 }
 
+export function getLoggedUser(): UserModel | boolean {
+    const token = localStorage.getItem("token")
+    if (token) {
+        return parseJwt(token)
+    }
+    return false
+}

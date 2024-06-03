@@ -12,7 +12,7 @@ const SideBar = () => {
           <Link
             to="/products"
             className={
-              location.pathname == "/products" ? "side-link active" : "side-link"
+              location.pathname === "/products" ? "side-link active" : "side-link"
             }
           >
             Products
@@ -20,7 +20,7 @@ const SideBar = () => {
           <Link
             to="/add-product"
             className={
-              location.pathname == "/add-product"
+              location.pathname === "/add-product"
                 ? "side-link active"
                 : "side-link"
             }

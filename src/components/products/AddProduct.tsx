@@ -1,15 +1,18 @@
 import { useForm } from "react-hook-form";
 import ProductModel from "../../models/ProductModel"
 import { addProduct } from "../../api/products-api";
+import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
     const { register, handleSubmit, reset } = useForm<ProductModel>();
     
+    const nav = useNavigate()
+    
     const handleAddProduct = async (p: ProductModel) => {
         const res = await addProduct(p);
-
         if (res) {
             alert("Product added successfully!");
+            nav("/home")
             // reset(); // clear all fields.
             // todo: redirect to home-page
         }

@@ -2,6 +2,7 @@ import ProductModel from '../../models/ProductModel'
 import { deleteProduct } from '../../api/products-api';
 
 import "./product.css"
+import { useNavigate } from 'react-router-dom';
 
 type props = {
     p: ProductModel;
@@ -10,8 +11,14 @@ type props = {
 
 const Product = (props: props) => {
     
+    const nav = useNavigate()
+
     const deleteIt = async () => {
         const res = await deleteProduct(props.p.id);
+        if (res) {
+            alert("Product deleted successfully!")
+            nav("/products")
+        }
         // props.reload()
         // todo: update parent component about the deletion
 

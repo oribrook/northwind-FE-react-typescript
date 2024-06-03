@@ -2,7 +2,7 @@ import { CredentialsModel } from "../models/CredentialsModel";
 import { UserModel } from "../models/UserModel";
 import { apiCall } from "./apiCall";
 
-export async function singUp(user: UserModel) {
+export async function singUp(user: UserModel): Promise<string | boolean> {
   const res = await apiCall("register", "POST", {}, user);
   if (res.isOk) {
     // save token to localStorage
@@ -10,9 +10,14 @@ export async function singUp(user: UserModel) {
 
     return res.data; // token
   } else {
-    alert("Can't register right now. retry latter");
-    console.log(res.errorMessage);
-    console.log(res.data);
+    
+    if (res.data.length > 0) {
+      alert(res.data)
+    } else {      
+      alert("Can't register right now. retry latter");
+      console.log(res.errorMessage);
+      console.log(res.data);
+    }
 
     return false;
   }
