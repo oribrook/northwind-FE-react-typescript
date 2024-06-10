@@ -3,6 +3,8 @@ import { getProducts } from "../../api/products-api";
 import Product from "./Product";
 import ProductModel from "../../models/ProductModel";
 import { useNavigate } from "react-router-dom";
+import Input from '@mui/material/Input';
+
 
 const Products = () => {
   const [products, setProducts] = useState<ProductModel[]>([]);
@@ -27,8 +29,8 @@ const Products = () => {
   return (
     <div>
       <div>
-        Search product:
-        <input
+        Search product:        
+        <Input          
           value={search}
           onChange={(e) => {
             setSearch(e.target.value);

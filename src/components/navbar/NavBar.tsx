@@ -53,7 +53,7 @@ const NavBar = (props: Props) => {
         {userData && <div>
           Welcome {userData.firstName}
           <br />
-          <button onClick={handleLogout}> Logout </button>
+          <button className="btn-primary btn" onClick={handleLogout}> Logout </button>
         </div>}
       </div>
     </div>

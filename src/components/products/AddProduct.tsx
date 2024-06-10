@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import ProductModel from "../../models/ProductModel"
 import { addProduct } from "../../api/products-api";
 import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const AddProduct = () => {
     const { register, handleSubmit, reset } = useForm<ProductModel>();
@@ -30,7 +31,7 @@ const AddProduct = () => {
               <input {...register("stock")}/>
               <label> image :</label>
               <input {...register("imageUrl")} />
-              <button> OK </button>
+              <Button> OK </Button>
           </form>
 
     </div>
