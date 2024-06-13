@@ -6,6 +6,8 @@ const SideBar = () => {
     
     const location = useLocation()
 
+    console.log("Sidebar rendered");
+    
   return (    
       <div className="side-main">
         <div className="side-links">

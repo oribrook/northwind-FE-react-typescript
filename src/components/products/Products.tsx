@@ -42,9 +42,10 @@ const Products = () => {
         {search === "" &&
           products.map((p) => (
             <div
-              onClick={() => {
-                nav("/product/" + p.id);
-              }}
+              key={p.id}
+              // onClick={() => {
+              //   nav("/product/" + p.id);
+              // }}
             >
               <Product key={p.id} p={p} />
             </div>

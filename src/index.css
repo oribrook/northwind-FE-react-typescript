@@ -5,6 +5,18 @@
   --color4: rgb(195, 194, 194);  
 }
 
+/* remove content on mobile */
+/* .app-div {
+  display: block;
+}
+@media screen and (max-width: 600px){
+  .app-div{
+    display: none;
+  }
+} */
+  
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

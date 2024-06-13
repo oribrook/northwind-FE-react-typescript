@@ -8,13 +8,15 @@ import "./index.css";
 import ProductModel from "./models/ProductModel";
 import { UserModel } from "./models/UserModel";
 import { getLoggedUser } from "./utils/helpers";
+import useWindowSize from "./hooks/useWindowSize";
 
 
 export const AppContext = createContext<any>(null);
 
 function App() {
-  const [order, setOrder] = useState<ProductModel[]>()
+  const [order, setOrder] = useState<ProductModel[]>([])
   const [userData, setUserData] = useState<UserModel | boolean>(false)
+  const { width, height } = useWindowSize()
 
   useEffect(() => {
     // check if user logged 
@@ -25,10 +27,10 @@ function App() {
   }, [])
 
   return (
-    <div>
+    <div className="app-div">
       <AppContext.Provider value={{ order, setOrder, userData, setUserData }}>
         <div className="app-wrap">
-          <SideBar />
+          {width > 600 && <SideBar />}
           <div className="app-content">
             <NavBar />
             <SiteRoutes />
