@@ -5,17 +5,23 @@ import { parseJwt } from "../../utils/helpers";
 import { UserModel } from "../../models/UserModel";
 import { useContext } from "react";
 import { AppContext } from "../../App";
+import { AuthAction, AuthActionType, authStore } from "../../redux/AuthState";
 
 const Login = () => {
   const { register, handleSubmit } = useForm<CredentialsModel>();
 
-  const { setUserData } = useContext(AppContext);
+  // const { setUserData } = useContext(AppContext);
 
   const handleLogin = async (c: CredentialsModel) => {
     const res = await login(c);
     if (res) {
       alert("Logged in successfully!");
-      setUserData(parseJwt(res));
+      const action: AuthAction = {
+        type: AuthActionType.SetUserData,
+        payload: parseJwt(res),
+      }
+      authStore.dispatch(action);
+      // setUserData(parseJwt(res));
     }
   };
   return (

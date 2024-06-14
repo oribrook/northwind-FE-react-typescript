@@ -4,17 +4,25 @@ import { UserModel } from "../../models/UserModel";
 import { singUp } from "../../api/auth";
 import { AppContext } from "../../App";
 import { useNavigate } from "react-router-dom";
+import { AuthAction, AuthActionType, authStore } from "../../redux/AuthState";
 
 const Register = () => {
   const { register, handleSubmit, reset } = useForm<UserModel>();
 
-  const { setUserData } = useContext(AppContext)
+  // const { setUserData } = useContext(AppContext)
   const nav = useNavigate()
   const handleRegister = async (um: UserModel) => {
     const token = await singUp(um);
       if (token) {        
         localStorage.setItem("token", token as string);
-        setUserData(um)
+
+        const action: AuthAction= {
+          type: AuthActionType.SetUserData,
+          payload: um,
+        }
+        authStore.dispatch(action);
+
+        // setUserData(um)
         nav("/home")          
     }
   };
