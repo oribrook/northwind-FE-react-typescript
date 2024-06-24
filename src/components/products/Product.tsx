@@ -18,6 +18,10 @@ const Product = (props: props) => {
     const { setOrder } = useContext(AppContext)
     
     const deleteIt = async () => {
+
+        // sleep 300 ms:
+        // await new Promise((x)=>{setTimeout(x, 300)})
+
         const res = await deleteProduct(props.p.id);
         if (res) {
             alert("Product deleted successfully!")

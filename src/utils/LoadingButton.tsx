@@ -1,8 +1,6 @@
 import { Button, CircularProgress } from "@mui/material";
 import { useState } from "react";
 
-
-
 export const LoadingButton = (props: any) => {
   const [loading, setLoading] = useState(false);
   return (
@@ -10,10 +8,10 @@ export const LoadingButton = (props: any) => {
       dir="rtl"
       {...props}
       onClick={async (e) => {
-        setLoading(true);        
-        await props.onClick(e);        
+        setLoading(true);
+        await props.onClick(e);
         await new Promise((x) => setTimeout(x, 500));
-        setLoading(false);        
+        setLoading(false);
       }}
     >
       {loading && (
